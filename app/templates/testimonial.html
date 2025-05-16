@@ -1,0 +1,35 @@
+
+{% load static %}
+{% block testimonial %}
+<div class="container py-5">
+    <h2 class="mb-4 text-center">What Says Our Client</h2>
+    <hr class="my-4">
+    <div id="testimonialCarousel"  class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner py-4">
+            {% for feedback in feedbacks %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                <div class="testimonial-card p-5 position-relative mx-3">
+                    <div class="quote-icon">"</div>
+                    <div class="row align-items-center">
+                        <div class="col-md-4 text-center">
+                            <img src="{{feedback.image.url}}" class="avatar mb-3" alt="User Avatar">
+                            <h5 class="mb-1">{{feedback.name}}</h5>
+                            <p class="text-muted mb-0">{{feedback.bio}}</p>
+                        </div>
+                        <div class="col-md-8">
+                            <p class="lead mb-0">"{{feedback.message}}"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+
+        <div class="carousel-indicators position-relative mt-4">
+            <button type="button" class="custom-indicator active" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" class="custom-indicator" data-bs-target="#testimonialCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        </div>
+    </div>
+</div>
+{% endblock testimonial %}

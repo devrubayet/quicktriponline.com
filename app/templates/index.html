@@ -58,8 +58,10 @@
 
     
   </section>
-  
-  <section>
+
+ 
+  <!-- Our Service -->
+  <section class="container my-5 py-5">
       <div>
           {% block our-service %}
        
@@ -67,6 +69,15 @@
           
 
           {% include 'our_service.html' %}
+           <!-- Testimonial -->
+            <section class="container">
+              <div class="">
+                {% block testimonial %}
+                {% include 'testimonial.html' %}
+                {% endblock testimonial %}
+              </div>
+              
+            </section>
           {% render_airlines_section %}
 
 
@@ -74,11 +85,9 @@
       </div>
   </section>
 
-  <section>
-    {% block why-choose-us %}
-    {% include 'why-choose-us.html' %}
-    {% endblock why-choose-us %}
-  </section>
+  
+
+  
 
 
 

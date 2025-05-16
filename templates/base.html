@@ -4,184 +4,397 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="{{info.logo.url}}" class="rounded-3" type="image/x-icon">
     <title>{{info.sitename}}</title>
+    <meta
+      name="description"
+      content="Explore the world with QuickTrip – trusted travel agency for visas, tours & unbeatable deals."
+    />
+    <meta
+      name="keywords"
+      content="travel agency, visa, tours, hotel booking, quicktrip"
+    />
+    <meta name="author" content="QuickTrip Team" />
+    <meta name="robots" content="index, follow" />
+    <link
+      rel="shortcut icon"
+      href="{{info.logo.url}}"
+      class="rounded-3"
+      type="image/x-icon"
+    />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
     />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-   
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+    <style>
+      .modal-content {
+        border-radius: 20px;
+        padding: 20px;
+      }
+      .modal-header {
+        border-bottom: none;
+      }
+      .modal-title {
+        color: #e94e1b;
+        font-weight: bold;
+      }
+      .table thead {
+        background-color: #090979;
+        color: #fff;
+      }
+      .table thead th {
+        background: #090979;
+        color: #fff;
+      }
+      .table th,
+      .table td {
+        text-align: center;
+        font-size: 14px;
+        vertical-align: middle;
+      }
+      .footer-info {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 14px;
+      }
+      .footer-info p {
+        margin: 0;
+        color: #fff;
+      }
+      .payment img {
+        max-height: 50px;
+        object-fit: cover;
+      }
+    </style>
   </head>
   <body>
-    <header class="container-fluid top-bar d-none d-sm-block">
+    <header class="container-fluid top-bar d-sm-block">
       <!-- Top Bar -->
-      <div class="container  d-flex justify-content-between align-items-center">
+      <div class="container d-flex   ">
         <!-- Left Side (Languages) -->
-        <div>
-          <span class="font-family-arial">{{info.sitename}}</span>
-        </div>
-
-        <!-- Right Side (Contact Info and Social Icons) -->
-        <div class="d-flex align-items-center fs-7">
-           <div class="divider"></div>
-          <div class="me-3 d-flex align-items-center">
-            <i class="bi bi-telephone-fill me-2"></i>
-            <a href="tel:{{info.phone}}">{{info.phone}}</a>
-          </div>
-          <div class="divider"></div>
-          <div class="me-3 d-flex align-items-center">
-            <i class="bi bi-envelope-fill me-2"></i>
-            <a href="mailto:{{info.email}}">{{info.email}}</a>
-          </div>
-          <div class="divider"></div>
-          <div class="social-icons ">
-
-            {% for link in info.social_links.all %}
-        <a href="{{ link.url }}" class="social-icon text-decoration-none px-2">
-            {% if link.platform_name == 'Facebook' %}
-                <i class="bi bi-facebook"></i>
-            {% elif link.platform_name == 'Twitter' %}
-               <i class="bi bi-twitter"></i>
-            {% elif link.platform_name == 'Linked In' %}
-                <i class="bi bi-linkedin"></i>
-            {% endif %}
-        </a>
-    {% endfor %}
-            
-            
-          </div>
+         <div class="">
+          <span>News:</span>
+         </div>
+        <div  class="flex-grow-1">
+          <marquee class="font-family-arial">
+            {{info.head_line}}</marquee
+          >
         </div>
       </div>
     </header>
 
     <!-- navbar -->
-     <!-- Navbar -->
-  <nav class="navbar text-uppercase navbar-expand-lg">
-    <div class="container">
-      <!-- Logo Section -->
-      <a class="navbar-brand" href="{% url 'home' %}">
-        <img class="img-fluid" src="{{ info.logo.url }}" alt="Logo">
-      </a>
-      
-      <!-- Navbar Toggle Button for Mobile -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <!-- Navigation Links -->
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="menu-item nav-link" href="{% url 'home' %}">Home</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link menu-item dropdown-toggle" href="#" id="dropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Visa
-            </a>
-            <ul class="dropdown-menu text-light" aria-labelledby="dropdownMenuLink">
-              
+    <!-- Navbar -->
+    <nav class="navbar text-uppercase navbar-expand-lg">
+      <div class="container">
+        <!-- Logo Section -->
+        <a class="navbar-brand" href="{% url 'home' %}">
+          <img class="img-fluid" src="{{ info.logo.url }}" alt="Logo" />
+        </a>
+
+        <!-- Navbar Toggle Button for Mobile -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navigation Links -->
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="menu-item nav-link" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link menu-item dropdown-toggle"
+                href="#"
+                id="dropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Visa
+              </a>
+              <ul
+                class="dropdown-menu text-light"
+                aria-labelledby="dropdownMenuLink"
+              >
                 {% for visa in visa_list %}
-                <li><a class="dropdown-item " href="{% url 'visa_details' visa.visa_name %}">{{ visa.visa_name }}</a></li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="{% url 'visa_details' visa.visa_name %}"
+                    >{{ visa.visa_name }}</a
+                  >
+                </li>
                 {% endfor %}
+              </ul>
+            </li>
 
-              
-            </ul>
-          </li>
-          
-          <li class="nav-item dropdown">
-            <a class="nav-link menu-item dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Package
-            </a>
-            <ul class="dropdown-menu text-light" aria-labelledby="dropdownMenuLink">
-              
-              {% for package in package_list %}
-              <li><a class="dropdown-item" href="{% url 'package-details' package.package_name %}">{{ package.package_name }}</a></li>
-              {% endfor %}
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link menu-item dropdown-toggle"
+                href="#"
+                id="navbarDarkDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Package
+              </a>
+              <ul
+                class="dropdown-menu text-light"
+                aria-labelledby="dropdownMenuLink"
+              >
+                {% for package in package_list %}
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="{% url 'package-details' package.package_name %}"
+                    >{{ package.package_name }}</a
+                  >
+                </li>
+                {% endfor %}
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="menu-item nav-link" href="{% url 'contact-us' %}"
+                >Contact Us</a
+              >
+            </li>
+            <li class="nav-item">
+              <button
+                type="button"
+                class="btn btn-blue px-4 fw-bold py-2"
+                data-bs-toggle="modal"
+                data-bs-target="#bankDetailsModal"
+              >
+                Bank Details
+              </button>
 
-              
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="menu-item nav-link" href="{% url 'contact-us' %}">Contact Us</a>
-          </li>
-        </ul>
+              <!-- Modal -->
+              <div
+                class="modal fade"
+                id="bankDetailsModal"
+                tabindex="-1"
+                aria-labelledby="bankDetailsLabel"
+                aria-hidden="true"
+              >
+                <div
+                  class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable"
+                >
+                  <div class="modal-content">
+                    <div class="modal-header bg-dark-blue">
+                      <h2
+                        class="modal-title w-100 bg-dark-blue text-light text-center"
+                        id="bankDetailsLabel"
+                      >
+                        Bank Details
+                      </h2>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="table-responsive">
+                        <table class="table table-bordered">
+                          <thead class="bg-dark-blue text-light">
+                            <tr>
+                              <th>Bank Name</th>
+                              <th>Account Name</th>
+                              <th>Account No.</th>
+                              <th>Branch Name</th>
+                              <th>Swift Code</th>
+                              <th>Routing No.</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for bank in bank_details %}
+                            <tr>
+                              <td class="bg-danger text-light fw-bold">
+                                {{bank.Bank_Name}}
+                              </td>
+                              <td>{{bank.Account_Name}}</td>
+                              <td>{{bank.Account_Number}}</td>
+                              <td>{{bank.Branch_Name}}</td>
+                              <td>{{bank.Swift_Code}}</td>
+                              <td>{{bank.Rounting_Number}}</td>
+                            </tr>
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="footer-info bg-dark-blue mt-4 text-dark">
+                        <p>
+                          📧 info@quicktriponline.com | 📞 +880 9611 211 244 |
+                          🌐 quicktriponline.com
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
-
- <main>
-    {% block content %}
-        <!-- Default content -->
-        {% endblock %}
-
- </main>
+    <main>
+      {% block content %}
+      <!-- Default content -->
+      {% endblock %}
+    </main>
 
     <!-- Tracking -->
-  
 
+    <section>
+      <!-- Footer Section -->
+      <footer class="footer">
+        <div class="container">
+          <div class="row d-flex justify-content-around">
+            <!-- Popular Services -->
 
+            <!-- Get in Touch -->
+            <div class="col-md-6">
+              <h5>Get in Touch</h5>
+              <p>
+                <strong
+                  ><i class="bi bi-building"></i> {{info.sitename}}</strong
+                >
+              </p>
+              <p>{{info.site_slogan}}</p>
+              <p><i class="bi bi-geo-alt"></i> {{info.office_address}}</p>
+              <p><i class="bi bi-telephone"></i> {{info.office_phone}}</p>
+              <p><i class="bi bi-envelope"></i> {{info.office_email}}</p>
+            </div>
+            <!-- About Us -->
+            <div class="col-md-6">
+              <h5>About Us</h5>
+              <p>{{info.about_us}}</p>
 
-  <section>
-    <!-- Footer Section -->
-  <footer class="footer">
-    <div class="container">
-      <div class="row d-flex justify-content-around">
-        <!-- Popular Services -->
-        
-        <!-- Get in Touch -->
-        <div class="col-md-6">
-          <h5>Get in Touch</h5>
-          <p><strong><i class="bi bi-building"></i> {{info.sitename}}</strong></p>
-          <p>{{info.site_slogan}}</p>
-          <p><i class="bi bi-geo-alt"></i> {{info.office_address}}
-          </p>
-          <p><i class="bi bi-telephone"></i> {{info.office_phone}}</p>
-          <p><i class="bi bi-envelope"></i> {{info.office_email}}</p>
+              <div class="container py-5">
+                <h5 class="text-white mb-4">Payment Methods</h5>
+                <div
+                  class="payment row text-center justify-content-center gap-2 align-items-center"
+                >
+                  <div
+                    class="col-4 col-sm-3 col-md-2 bg-light border rounded mb-3"
+                  >
+                    <img
+                      src="{% static 'img\Visa-Card-Logo.svg' %}"
+                      class="img-fluid"
+                      alt="Visa"
+                    />
+                  </div>
+                  <div
+                    class="col-4 col-sm-3 col-md-2 bg-light border rounded mb-3"
+                  >
+                    <img
+                      src="{% static 'img\Master-Card-Logo.svg' %}"
+                      class="img-fluid"
+                      alt="Visa"
+                    />
+                  </div>
+                  <div
+                    class="col-4 col-sm-3 col-md-2 bg-light border rounded mb-3"
+                  >
+                    <img
+                      src="{% static 'img\American-Express-Logo.svg' %}"
+                      class="img-fluid"
+                      alt="Visa"
+                    />
+                  </div>
+                  <div
+                    class="col-4 col-sm-3 col-md-2 bg-light border rounded mb-3"
+                  >
+                    <img
+                      src="{% static 'img\Bkash-Horizontal-Logo.svg' %}"
+                      class="img-fluid"
+                      alt="Visa"
+                    />
+                  </div>
+                  <div
+                    class="col-4 col-sm-3 col-md-2 bg-light border rounded mb-3"
+                  >
+                    <img
+                      src="{% static 'img\Nagad-Horizontal-Logo.svg' %}"
+                      class="img-fluid"
+                      alt="Visa"
+                    />
+                  </div>
+                  <div
+                    class="col-4 col-sm-3 col-md-2 bg-light border rounded mb-3"
+                  >
+                    <img
+                      src="{% static 'img\sslcommerce.png' %}"
+                      class="img-fluid"
+                      alt="Visa"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Newsletter -->
+          </div>
         </div>
-        <!-- About Us -->
-        <div class="col-md-6">
-          <h5>About Us</h5>
-          <p>
-            {{info.about_us}}
-          </p>
+        <!-- Footer Bottom -->
+        <div class="footer-bottom py-4 fs-6">
+          © 2019-2024 {{info.sitename}}, All rights reserved.
         </div>
-        <!-- Newsletter -->
-        
-      </div>
-    </div>
-    <!-- Footer Bottom -->
-    <div class="footer-bottom py-4 fs-6">
-      © 2019-2024 {{info.sitename}}, All rights reserved.
-    </div>
-  </footer>
-  
-  </section>
- 
+      </footer>
+    </section>
 
     <!-- Bootstrap Icons -->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
 
-     <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const dropdowns = document.querySelectorAll('.dropdown');
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const dropdowns = document.querySelectorAll(".dropdown");
 
-    dropdowns.forEach(dropdown => {
-      dropdown.addEventListener('mouseenter', function () {
-        this.classList.add('show');
-        this.querySelector('.dropdown-menu').classList.add('show');
+        dropdowns.forEach((dropdown) => {
+          dropdown.addEventListener("mouseenter", function () {
+            this.classList.add("show");
+            this.querySelector(".dropdown-menu").classList.add("show");
+          });
+
+          dropdown.addEventListener("mouseleave", function () {
+            this.classList.remove("show");
+            this.querySelector(".dropdown-menu").classList.remove("show");
+          });
+        });
       });
-
-      dropdown.addEventListener('mouseleave', function () {
-        this.classList.remove('show');
-        this.querySelector('.dropdown-menu').classList.remove('show');
-      });
-    });
-  });
-</script>
-
+    </script>
   </body>
 </html>

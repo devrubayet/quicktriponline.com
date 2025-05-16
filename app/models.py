@@ -15,7 +15,7 @@ class Information(models.Model):
     office_phone = models.CharField(max_length=20 , blank=True, null=True)
 
     about_us = models.TextField(blank=True, null=True)
-
+    head_line = models.TextField(blank=True, null=True)
 
 
 
@@ -101,3 +101,26 @@ class AirlinesList(models.Model):
 
     def __str__(self):
         return self.airlines_name
+    
+
+
+class BankDetails(models.Model):
+    Bank_Name = models.CharField(max_length=100,blank=True, null=True)
+    Account_Name = models.CharField(max_length=100,blank=True, null=True)
+    Account_Number = models.CharField(max_length=100,blank=True, null=True)
+    Branch_Name = models.CharField(max_length=100,blank=True, null=True)
+    Swift_Code = models.CharField(max_length=100,blank=True, null=True)
+    Rounting_Number = models.CharField(max_length=100,blank=True, null=True)
+    
+    def __str__(self):
+        return self.Bank_Name
+
+
+class feedback(models.Model):
+    image = models.ImageField(upload_to='feedback_images/', blank=True, null=True)
+    name = models.CharField(max_length=100,blank=True, null=True)
+    bio = models.fieldName = models.CharField(max_length = 150,blank=True, null=True)
+    message = models.TextField(blank=True, null=True)
+    
+    def __str__(self):
+        return self.name

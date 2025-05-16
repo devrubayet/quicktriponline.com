@@ -57,3 +57,5 @@ class PackageListAdmin(admin.ModelAdmin):
 admin.site.register(PackageList, PackageListAdmin)
 
 admin.site.register(AirlinesList)
+admin.site.register(BankDetails)
+admin.site.register(feedback)

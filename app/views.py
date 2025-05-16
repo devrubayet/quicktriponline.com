@@ -1,6 +1,7 @@
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render,get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
+from urllib.parse import unquote
 
 import json
 
@@ -10,12 +11,16 @@ from .models import CheckStatus
 from .models import Slider
 from .models import VisaList
 from .models import PackageList
+from .models import BankDetails
+from .models import feedback
 from .forms import ReferenceForm
 # Create your views here.
 def index(request):
     info = Information.objects.all()[Information.objects.count() - 1]
     visa_list = VisaList.objects.all()
     package_list = PackageList.objects.all()
+    bank_details = BankDetails.objects.all()
+    feedbacks = feedback.objects.all()
 
 
 
@@ -24,7 +29,9 @@ def index(request):
         'info':info,
         'images':images,
         'visa_list':visa_list,
-        'package_list':package_list
+        'package_list':package_list,
+        'bank_details':bank_details,
+        'feedbacks':feedbacks
         # 'error_message':error_message
     }
     return render(request, 'index.html',  context)
@@ -70,6 +77,7 @@ def track_application(request):
 
 
 def visa_details(request, visa_name):
+    visa_name = unquote(visa_name)
     info = Information.objects.all()[Information.objects.count() - 1]
     visa_list = VisaList.objects.all()
     package_list = PackageList.objects.all()
@@ -138,3 +146,5 @@ def Airlines(request):
         # 'error_message':error_message
     }
     return render(request, 'airlines.html',  context)
+
+
